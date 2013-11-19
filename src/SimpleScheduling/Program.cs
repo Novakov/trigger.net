@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Trigger.NET;
-using Trigger.NET.WaitSources;
-
-namespace SimpleScheduling
+﻿namespace SimpleScheduling
 {
+    using System;
+    using Trigger.NET;
+    using Trigger.NET.WaitSources;
+
     class Program
     {
         static void Main(string[] args)
         {
+            Scheduler.LoggerFactory = () => new NoLogger();
+
             var scheduler = new Scheduler();
 
             Console.WriteLine("Adding WriteDot job");
@@ -33,7 +31,7 @@ namespace SimpleScheduling
     {
         public void Execute()
         {
-            Console.Write(".");
+            Console.WriteLine(".");
         }
     }
 }

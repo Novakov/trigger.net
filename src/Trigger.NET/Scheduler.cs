@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Trigger.NET
+﻿namespace Trigger.NET
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Scheduler
     {
+        private Func<IContainer> containerFactory = () => new DefaultContainer();
+
+        private Func<ILogger> loggerFactory = () => new DefaultLogger();
+
         private readonly Dictionary<Guid, Worker> jobs;
 
         public Scheduler()
@@ -16,11 +16,23 @@ namespace Trigger.NET
             this.jobs = new Dictionary<Guid, Worker>();
         }
 
+        public Func<IContainer> ContainerFactory
+        {
+            get { return this.containerFactory; }
+            set { this.containerFactory = value; }
+        }
+
+        public Func<ILogger> LoggerFactory
+        {
+            get { return this.loggerFactory; }
+            set { this.loggerFactory = value; }
+        }
+
         public Guid AddJob<TJob>(IWaitSource waitSource)
         {
             var id = Guid.NewGuid();
 
-            var state = new Worker(typeof (TJob), waitSource);
+            var state = new Worker(typeof(TJob), waitSource, this.ContainerFactory, this.LoggerFactory);
 
             this.jobs[id] = state;
 
