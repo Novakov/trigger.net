@@ -1,8 +1,8 @@
-﻿namespace SimpleScheduling
+﻿namespace SimpleSchedulingWithFluentAPI
 {
     using System;
     using Trigger.NET;
-    using Trigger.NET.WaitSources;
+    using Trigger.NET.FluentAPI;
 
     class Program
     {
@@ -12,7 +12,9 @@
 
             Console.WriteLine("Adding WriteDot job");
 
-            var jobId = scheduler.AddJob<WriteDot>(new IntervalWaitSource(TimeSpan.FromSeconds(1)));
+            var jobId = scheduler.AddJob<WriteDot>()
+                                 .RunEvery(TimeSpan.FromSeconds(1))
+                                 .Done();
 
             Console.ReadLine();
 
