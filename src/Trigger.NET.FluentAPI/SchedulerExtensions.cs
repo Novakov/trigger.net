@@ -1,10 +1,17 @@
 ﻿namespace Trigger.NET.FluentAPI
 {
+    using System;
+
     public static class SchedulerExtensions
     {
-        public static ISpecifyWaitSource<T> AddJob<T>(this Scheduler @this)
+        public static Guid AddJob<T>(this Scheduler @this, Action<IJobConfiguration<T>> configure) 
+            where T : IJob
         {
-            return (ISpecifyWaitSource<T>)new JobBuilder<T>(@this);
+            var cfg = new JobConfiguration<T>();
+
+            configure(cfg);
+
+            return cfg.SetupJob(@this);
         }
     }
 }

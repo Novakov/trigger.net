@@ -39,10 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IJobBuilder.cs" />
-    <Compile Include="ISpecifyWaitSource.cs" />
-    <Compile Include="JobBuilder.cs" />
+    <Compile Include="IJobConfiguration.cs" />
     <Compile Include="JobBuilderExtensions.cs" />
+    <Compile Include="JobConfiguration.cs" />
     <Compile Include="SchedulerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -12,9 +12,7 @@
 
             Console.WriteLine("Adding WriteDot job");
 
-            var jobId = scheduler.AddJob<WriteDot>()
-                                 .RunEvery(TimeSpan.FromSeconds(1))
-                                 .Done();
+            var jobId = scheduler.AddJob<WriteDot>(cfg => cfg.RunEvery(TimeSpan.FromSeconds(1)));                                
 
             Console.ReadLine();
 
