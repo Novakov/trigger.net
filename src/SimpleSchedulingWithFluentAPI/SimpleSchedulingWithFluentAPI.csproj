@@ -48,10 +48,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Trigger.NET.FluentAPI\Trigger.NET.FluentAPI.csproj">
-      <Project>{00CD25D4-DFE4-4C57-9732-333D9B13B068}</Project>
-      <Name>Trigger.NET.FluentAPI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Trigger.NET\Trigger.NET.csproj">
       <Project>{F434617F-A8DC-4D68-BEC3-95CC3D8B6ABE}</Project>
       <Name>Trigger.NET</Name>
