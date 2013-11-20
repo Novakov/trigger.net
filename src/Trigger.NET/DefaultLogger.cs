@@ -4,16 +4,33 @@
 
     public class DefaultLogger : ILogger
     {
+        private readonly LogSeverity minimalSeverity;
+
+        public DefaultLogger()
+            : this(minimalSeverity: LogSeverity.Info)
+        {
+
+        }
+
+        public DefaultLogger(LogSeverity minimalSeverity)
+        {
+            this.minimalSeverity = minimalSeverity;
+        }
+
         public void Log(LogSeverity severity, string message, params object[] args)
         {
             if (!Environment.UserInteractive) return;
+            if ((int)severity < (int)this.minimalSeverity) return;
+
+            var color = Console.ForegroundColor;
 
             switch (severity)
             {
                 case LogSeverity.Debug:
-#if !DEBUG
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("{0}\t{1}\t{2}", severity, DateTime.Now, string.Format(message, args));
+                    Console.ForegroundColor = color;
                     break;
-#endif
                 case LogSeverity.Info:
                 case LogSeverity.Warn:
                     Console.WriteLine("{0}\t{1}\t{2}", severity, DateTime.Now, string.Format(message, args));
@@ -21,7 +38,6 @@
                 case LogSeverity.Error:
                 case LogSeverity.Critical:
                 default:
-                    var color = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Error.WriteLine("{0}\t{1}\t{2}", severity, DateTime.Now, string.Format(message, args));
                     Console.ForegroundColor = color;
