@@ -28,11 +28,11 @@
             set { this.loggerFactory = value; }
         }
 
-        public Guid AddJob<TJob>(IWaitSource waitSource)
+        public Guid AddJob<TJob>(JobSetup jobSetup)
         {
             var id = Guid.NewGuid();
 
-            var state = new Worker(typeof(TJob), waitSource, this.ContainerFactory, this.LoggerFactory);
+            var state = new Worker(typeof(TJob), jobSetup.WaitSource, this.ContainerFactory, this.LoggerFactory);
 
             this.jobs[id] = state;
 

@@ -45,6 +45,7 @@
     <Compile Include="IJob.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="IWaitSource.cs" />
+    <Compile Include="JobSetup.cs" />
     <Compile Include="LogSeverity.cs" />
     <Compile Include="NoLogger.cs" />
     <Compile Include="Scheduler.cs" />

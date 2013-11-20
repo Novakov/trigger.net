@@ -12,7 +12,7 @@
 
             Console.WriteLine("Adding WriteDot job");
 
-            var jobId = scheduler.AddJob<WriteDot>(new IntervalWaitSource(TimeSpan.FromSeconds(1)));
+            var jobId = scheduler.AddJob<WriteDot>(new JobSetup() {WaitSource = new IntervalWaitSource(TimeSpan.FromSeconds(1))});
 
             Console.ReadLine();
 
