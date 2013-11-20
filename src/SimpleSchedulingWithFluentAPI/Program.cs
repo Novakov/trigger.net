@@ -10,6 +10,8 @@
         {
             var scheduler = new Scheduler();
 
+            scheduler.LoggerFactory = () => new DefaultLogger(minimalSeverity: LogSeverity.Info);
+
             Console.WriteLine("Adding WriteDot job");
 
             var jobId = scheduler.AddJob<WriteDot>(cfg => cfg.RunEvery(TimeSpan.FromSeconds(1)));                                
