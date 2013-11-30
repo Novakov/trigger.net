@@ -14,13 +14,21 @@
 
             Console.WriteLine("Adding WriteDot job");
 
-            var jobId = scheduler.AddJob<WriteDot>(cfg => cfg.RunEvery(TimeSpan.FromSeconds(1)));                                
+            var writeDotId = scheduler.AddJob<WriteDot>(cfg => cfg.RunEvery(TimeSpan.FromSeconds(1)));                                
+
+            Console.WriteLine("Adding WriteComma job");
+
+            var writeCommaId = scheduler.AddJob<WriteComma>(cfg => cfg.RunWithSequence(DateTimeOffset.Now, x => x.AddMinutes(5)));
 
             Console.ReadLine();
 
             Console.WriteLine("Removing WriteDot job");
 
-            scheduler.RemoveJob(jobId);
+            scheduler.RemoveJob(writeDotId);
+
+            Console.WriteLine("Removing WriteComma job");
+
+            scheduler.RemoveJob(writeCommaId);
 
             Console.ReadLine();
         }
@@ -31,6 +39,14 @@
         public void Execute()
         {
             Console.WriteLine(".");
+        }
+    }
+
+    public class WriteComma : IJob
+    {
+        public void Execute()
+        {
+            Console.WriteLine("{0}: ,", DateTimeOffset.Now);
         }
     }
 }

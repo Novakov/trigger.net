@@ -51,10 +51,17 @@
     <Compile Include="IWaitSource.cs" />
     <Compile Include="JobSetup.cs" />
     <Compile Include="LogSeverity.cs" />
+    <Compile Include="NativeWrappers\INative.cs" />
+    <Compile Include="NativeWrappers\Native.cs" />
+    <Compile Include="NativeWrappers\TimerWaitHandle.cs" />
+    <Compile Include="NativeWrappers\Win32Native.cs" />
     <Compile Include="NoLogger.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WaitSources\DateTimeSequenceWaitSource.cs" />
     <Compile Include="WaitSources\IntervalWaitSource.cs" />
+    <Compile Include="WaitSources\WaitUnitDate.cs" />
+    <Compile Include="WaitSources\WaitUntilNextDateWaitSource.cs" />
     <Compile Include="Worker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
