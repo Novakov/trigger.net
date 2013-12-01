@@ -46,6 +46,7 @@
     <Compile Include="FluentAPI\JobConfiguration.cs" />
     <Compile Include="FluentAPI\SchedulerExtensions.cs" />
     <Compile Include="IContainer.cs" />
+    <Compile Include="IHideObjectMembers.cs" />
     <Compile Include="IJob.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="IWaitSource.cs" />

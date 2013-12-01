@@ -2,7 +2,7 @@
 {
     using System;
 
-    public interface IJobConfiguration<TJob>
+    public interface IJobConfiguration<TJob> : IHideObjectMembers
         where TJob : IJob
     {
         IJobConfiguration<TJob> UseWaitSource(IWaitSource waitSource);
