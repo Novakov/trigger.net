@@ -2,17 +2,11 @@
 {
     using System;
 
-    public class DefaultLogger : ILogger
+    public class ConsoleLogger : ILogger
     {
         private readonly LogSeverity minimalSeverity;
-
-        public DefaultLogger()
-            : this(minimalSeverity: LogSeverity.Info)
-        {
-
-        }
-
-        public DefaultLogger(LogSeverity minimalSeverity)
+      
+        public ConsoleLogger(LogSeverity minimalSeverity)
         {
             this.minimalSeverity = minimalSeverity;
         }

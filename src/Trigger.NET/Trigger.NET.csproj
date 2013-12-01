@@ -39,8 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleLoggerFactory.cs" />
     <Compile Include="DefaultContainer.cs" />
-    <Compile Include="DefaultLogger.cs" />
+    <Compile Include="ConsoleLogger.cs" />
     <Compile Include="FluentAPI\IJobConfiguration.cs" />
     <Compile Include="FluentAPI\JobBuilderExtensions.cs" />
     <Compile Include="FluentAPI\JobConfiguration.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="IHideObjectMembers.cs" />
     <Compile Include="IJob.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="ILoggerFactory.cs" />
     <Compile Include="IWaitSource.cs" />
     <Compile Include="JobSetup.cs" />
     <Compile Include="LogSeverity.cs" />

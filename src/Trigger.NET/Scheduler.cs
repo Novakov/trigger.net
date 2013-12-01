@@ -5,40 +5,34 @@
 
     public class Scheduler
     {
-        private Func<IContainer> containerFactory = () => new DefaultContainer();
-
-        private Func<ILogger> loggerFactory = () => new DefaultLogger();
+        private readonly Func<IContainer> containerFactory;
+        private readonly ILoggerFactory loggerFactory;
 
         private readonly Dictionary<Guid, Worker> jobs;
 
-        public Scheduler()
+        public Scheduler(ILoggerFactory loggerFactory = null, Func<IContainer> containerFactory = null)
         {
             this.jobs = new Dictionary<Guid, Worker>();
-        }
 
-        public Func<IContainer> ContainerFactory
-        {
-            get { return this.containerFactory; }
-            set { this.containerFactory = value; }
-        }
+            this.loggerFactory = loggerFactory ?? new ConsoleLoggerFactory();
 
-        public Func<ILogger> LoggerFactory
-        {
-            get { return this.loggerFactory; }
-            set { this.loggerFactory = value; }
+            this.containerFactory = containerFactory ?? (() => new DefaultContainer());
         }
 
         public Guid AddJob<TJob>(JobSetup jobSetup)
         {
-            var id = Guid.NewGuid();
+            if (jobSetup.JobId == Guid.Empty)
+            {
+                jobSetup.JobId = Guid.NewGuid();
+            }
 
-            var state = new Worker(typeof(TJob), jobSetup.WaitSource, this.ContainerFactory, this.LoggerFactory);
+            var state = new Worker(typeof(TJob), jobSetup, this.containerFactory, this.loggerFactory);
 
-            this.jobs[id] = state;
+            this.jobs[jobSetup.JobId] = state;
 
             state.Start();
 
-            return id;
+            return jobSetup.JobId;
         }
 
         public void RemoveJob(Guid jobId)

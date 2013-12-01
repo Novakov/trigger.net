@@ -8,9 +8,7 @@
     {
         static void Main(string[] args)
         {
-            var scheduler = new Scheduler();
-
-            scheduler.LoggerFactory = () => new DefaultLogger(minimalSeverity: LogSeverity.Info);
+            var scheduler = new Scheduler();            
 
             Console.WriteLine("Adding WriteDot job");
 

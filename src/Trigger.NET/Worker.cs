@@ -6,15 +6,15 @@ namespace Trigger.NET
     internal class Worker
     {
         private readonly Type jobType;
-        private readonly IWaitSource waitSource;
+        private readonly JobSetup setup;
         private readonly Func<IContainer> containerFactory;
         private readonly Thread thread;
         private readonly ILogger logger;
 
-        public Worker(Type jobType, IWaitSource waitSource, Func<IContainer> containerFactory, Func<ILogger> loggerFactory)
+        public Worker(Type jobType, JobSetup setup, Func<IContainer> containerFactory, ILoggerFactory loggerFactory)
         {
             this.jobType = jobType;
-            this.waitSource = waitSource;
+            this.setup = setup;
             this.containerFactory = containerFactory;
             this.thread = new Thread(Run)
             {
@@ -22,7 +22,7 @@ namespace Trigger.NET
                 Name = "Worker: " + jobType.FullName
             };
 
-            this.logger = loggerFactory();
+            this.logger = loggerFactory.GetLogger(jobType, setup.JobId);
         }
 
         public void Start()
@@ -43,7 +43,7 @@ namespace Trigger.NET
         {
             try
             {
-                foreach (var wait in this.waitSource.GetWaits())
+                foreach (var wait in this.setup.WaitSource.GetWaits())
                 {
                     wait.Wait();
 
@@ -58,7 +58,6 @@ namespace Trigger.NET
 
         private void RunJob()
         {
-            //TODO: use some kind of factory to create job types
             //TODO: More uniform log messages
 
             try
