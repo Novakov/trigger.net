@@ -2,6 +2,7 @@
 {
     using System;
     using Trigger.NET;
+    using Trigger.NET.Cron;
     using Trigger.NET.FluentAPI;
 
     class Program
@@ -17,6 +18,8 @@
             Console.WriteLine("Adding WriteComma job");
 
             var writeCommaId = scheduler.AddJob<WriteComma>(cfg => cfg.RunWithSequence(DateTimeOffset.Now, x => x.AddMinutes(5)));
+
+            scheduler.AddJob<CronJob>(cfg => cfg.UseCron("*/4 * * * *"));
 
             Console.ReadLine();
 
@@ -36,7 +39,7 @@
     {
         public void Execute()
         {
-            Console.WriteLine(".");
+            Console.Write(".");
         }
     }
 
@@ -45,6 +48,14 @@
         public void Execute()
         {
             Console.WriteLine("{0}: ,", DateTimeOffset.Now);
+        }
+    }
+
+    public class CronJob : IJob
+    {
+        public void Execute()
+        {
+            Console.WriteLine("\nCron job: {0}", DateTimeOffset.Now);
         }
     }
 }

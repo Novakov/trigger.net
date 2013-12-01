@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleScheduling", "SimpleS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleSchedulingWithFluentAPI", "SimpleSchedulingWithFluentAPI\SimpleSchedulingWithFluentAPI.csproj", "{C3656D86-F20F-40B9-8088-C7331293C6B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{D52C111C-301D-46B7-A7FB-4690DF2A7440}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trigger.NET.Cron", "Trigger.NET.Cron\Trigger.NET.Cron.csproj", "{403B6987-FEBE-4727-9F06-33D8888DDC04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,10 @@ Global
 		{C3656D86-F20F-40B9-8088-C7331293C6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3656D86-F20F-40B9-8088-C7331293C6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3656D86-F20F-40B9-8088-C7331293C6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{403B6987-FEBE-4727-9F06-33D8888DDC04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{403B6987-FEBE-4727-9F06-33D8888DDC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{403B6987-FEBE-4727-9F06-33D8888DDC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{403B6987-FEBE-4727-9F06-33D8888DDC04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,5 +44,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E243034D-CCC2-462E-8B8F-C88FB5608340} = {61D93860-270C-4747-9A6A-F4163A2D937B}
 		{C3656D86-F20F-40B9-8088-C7331293C6B5} = {61D93860-270C-4747-9A6A-F4163A2D937B}
+		{403B6987-FEBE-4727-9F06-33D8888DDC04} = {D52C111C-301D-46B7-A7FB-4690DF2A7440}
 	EndGlobalSection
 EndGlobal
