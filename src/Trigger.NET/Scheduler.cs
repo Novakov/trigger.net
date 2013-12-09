@@ -5,18 +5,18 @@
 
     public class Scheduler
     {
-        private readonly Func<IContainer> containerFactory;
+        private readonly IContainerFactory containerFactory;
         private readonly ILoggerFactory loggerFactory;
 
         private readonly Dictionary<Guid, Worker> jobs;
 
-        public Scheduler(ILoggerFactory loggerFactory = null, Func<IContainer> containerFactory = null)
+        public Scheduler(ILoggerFactory loggerFactory = null, IContainerFactory containerFactory = null)
         {
             this.jobs = new Dictionary<Guid, Worker>();
 
             this.loggerFactory = loggerFactory ?? new ConsoleLoggerFactory();
 
-            this.containerFactory = containerFactory ?? (() => new DefaultContainer());
+            this.containerFactory = containerFactory ?? new DefaultContainerFactory();
         }
 
         public Guid AddJob<TJob>(JobSetup jobSetup)

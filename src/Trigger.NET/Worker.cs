@@ -7,11 +7,11 @@ namespace Trigger.NET
     {
         private readonly Type jobType;
         private readonly JobSetup setup;
-        private readonly Func<IContainer> containerFactory;
+        private readonly IContainerFactory containerFactory;
         private readonly Thread thread;
         private readonly ILogger logger;
 
-        public Worker(Type jobType, JobSetup setup, Func<IContainer> containerFactory, ILoggerFactory loggerFactory)
+        public Worker(Type jobType, JobSetup setup, IContainerFactory containerFactory, ILoggerFactory loggerFactory)
         {
             this.jobType = jobType;
             this.setup = setup;
@@ -62,7 +62,7 @@ namespace Trigger.NET
 
             try
             {
-                using (var container = this.containerFactory())
+                using (var container = this.containerFactory.GetContainer())
                 {
                     logger.Log(LogSeverity.Debug, "Instantiating job: {0}", jobType.FullName);
 
