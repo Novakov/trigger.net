@@ -28,7 +28,7 @@
             set { this.loggerFactory = value; }
         }
 
-        public Guid AddJob<TJob>(IWaitSource waitSource)
+        public virtual Guid AddJob<TJob>(IWaitSource waitSource)
         {
             var id = Guid.NewGuid();
 
@@ -41,7 +41,7 @@
             return id;
         }
 
-        public void RemoveJob(Guid jobId)
+        public virtual void RemoveJob(Guid jobId)
         {
             if (this.jobs.ContainsKey(jobId))
             {

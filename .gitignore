@@ -178,3 +178,5 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+/src/packages/Moq.4.2.1402.2112
+/src/packages/NUnit.2.6.3
