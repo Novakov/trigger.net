@@ -1,6 +1,7 @@
 ﻿namespace Trigger.NET.Configuration.Tests
 {
     using System;
+    using System.IO;
     using System.Xml.Linq;
     using Moq;
     using NUnit.Framework;
@@ -10,12 +11,12 @@
     [TestFixture]
     public class XmlConfigurationTests
     {
-        public Mock<Scheduler> Scheduler { get; set; }
+        public Mock<IScheduler> Scheduler { get; set; }
 
         [SetUp]
         public void Setup()
         {
-            this.Scheduler = new Mock<Scheduler>();
+            this.Scheduler = new Mock<IScheduler>();
         }
 
         [Test]
@@ -26,11 +27,42 @@
             var xml = XElement.Parse(xmlString);
 
             // act
-            var func = XmlJobParser.Parse(xml);
-            func(this.Scheduler.Object);
+            XmlJobParser.Parse(xml)(this.Scheduler.Object);
 
             // assert
-            this.Scheduler.Verify(x => x.AddJob<DummyJob>(It.Is<IntervalWaitSource>(y => y.Interval == TimeSpan.FromSeconds(1))));
+            this.Scheduler.Verify(x => x.AddJob<DummyJob>(It.Is<IntervalWaitSource>(y => y.Interval == TimeSpan.FromSeconds(1))), Times.Once);
+        }
+
+        [Test]
+        public void ForCoupleJobDefinitionsShouldConfigureCoupleJobs()
+        {
+            // arrange
+            var xmlString = string.Format("<Jobs><Job JobType=\"{0}\" Interval=\"00:00:01\"/><Job JobType=\"{0}\" Interval=\"12:00:01\"/></Jobs>", typeof (DummyJob).AssemblyQualifiedName);
+            var xml = XDocument.Parse(xmlString);
+
+            // act
+            foreach(var f in XmlJobParser.Parse(xml)) f(this.Scheduler.Object);
+
+            // assert
+            this.Scheduler.Verify(x => x.AddJob<DummyJob>(It.Is<IntervalWaitSource>(y => y.Interval == TimeSpan.FromSeconds(1))), Times.Once);
+            this.Scheduler.Verify(x => x.AddJob<DummyJob>(It.Is<IntervalWaitSource>(y => y.Interval == TimeSpan.Parse("12:00:01"))), Times.Once);
+        }
+
+        [Test]
+        public void ShouldConfigureFromFile()
+        {
+            // arrange
+            var xmlString = string.Format("<?xml version=\"1.0\" encoding=\"UTF-8\"?><Jobs><Job JobType=\"{0}\" Interval=\"00:00:01\"/><Job JobType=\"{0}\" Interval=\"12:00:01\"/></Jobs>", typeof(DummyJob).AssemblyQualifiedName);
+            var path = Path.GetTempFileName();
+
+            File.WriteAllText(path, xmlString);
+
+            // act
+            this.Scheduler.Object.ConfigureFromXml(path);
+
+            // assert
+            this.Scheduler.Verify(x => x.AddJob<DummyJob>(It.Is<IntervalWaitSource>(y => y.Interval == TimeSpan.FromSeconds(1))), Times.Once);
+            this.Scheduler.Verify(x => x.AddJob<DummyJob>(It.Is<IntervalWaitSource>(y => y.Interval == TimeSpan.Parse("12:00:01"))), Times.Once);
         }
     }
 }

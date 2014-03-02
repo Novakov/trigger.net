@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Scheduler
+    public class Scheduler : IScheduler
     {
         private Func<IContainer> containerFactory = () => new DefaultContainer();
 
@@ -28,7 +28,7 @@
             set { this.loggerFactory = value; }
         }
 
-        public virtual Guid AddJob<TJob>(IWaitSource waitSource)
+        public Guid AddJob<TJob>(IWaitSource waitSource)
         {
             var id = Guid.NewGuid();
 

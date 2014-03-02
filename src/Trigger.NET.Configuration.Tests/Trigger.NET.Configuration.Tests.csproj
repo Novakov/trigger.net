@@ -48,6 +48,7 @@
     <Compile Include="DummyJob.cs" />
     <Compile Include="DummyWaitSource.cs" />
     <Compile Include="JobParserTests.cs" />
+    <Compile Include="JsonConfigurationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlConfigurationTests.cs" />
   </ItemGroup>
