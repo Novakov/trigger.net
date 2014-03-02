@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E243034D-CCC2-462E-8B8F-C88FB5608340}</ProjectGuid>
+    <ProjectGuid>{C3656D86-F20F-40B9-8088-C7331293C6B5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SimpleScheduling</RootNamespace>
-    <AssemblyName>SimpleScheduling</AssemblyName>
+    <RootNamespace>SimpleSchedulingWithFluentAPI</RootNamespace>
+    <AssemblyName>SimpleSchedulingWithFluentAPI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,8 +48,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Trigger.NET\Trigger.NET.csproj">
-      <Project>{f434617f-a8dc-4d68-bec3-95cc3d8b6abe}</Project>
+    <ProjectReference Include="..\..\Trigger.NET.Cron\Trigger.NET.Cron.csproj">
+      <Project>{403b6987-febe-4727-9f06-33d8888ddc04}</Project>
+      <Name>Trigger.NET.Cron</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Trigger.NET\Trigger.NET.csproj">
+      <Project>{F434617F-A8DC-4D68-BEC3-95CC3D8B6ABE}</Project>
       <Name>Trigger.NET</Name>
     </ProjectReference>
   </ItemGroup>

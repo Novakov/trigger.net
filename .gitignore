@@ -181,3 +181,6 @@ $RECYCLE.BIN/
 
 Trigger.NET*.nupkg
 *.swp
+/src/packages/Moq.4.2.1402.2112
+/src/packages/NUnit.2.6.3
+

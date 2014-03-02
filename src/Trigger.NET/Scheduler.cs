@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Scheduler
+    public class Scheduler : IScheduler
     {
         private readonly IContainerFactory containerFactory;
         private readonly ILoggerFactory loggerFactory;
@@ -35,7 +35,7 @@
             return jobSetup.JobId;
         }
 
-        public void RemoveJob(Guid jobId)
+        public virtual void RemoveJob(Guid jobId)
         {
             if (this.jobs.ContainsKey(jobId))
             {

@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F434617F-A8DC-4D68-BEC3-95CC3D8B6ABE}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{E243034D-CCC2-462E-8B8F-C88FB5608340}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Trigger.NET</RootNamespace>
-    <AssemblyName>Trigger.NET</AssemblyName>
+    <RootNamespace>SimpleScheduling</RootNamespace>
+    <AssemblyName>SimpleScheduling</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,39 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleLoggerFactory.cs" />
-    <Compile Include="DefaultContainer.cs" />
-    <Compile Include="ConsoleLogger.cs" />
-    <Compile Include="DefaultContainerFactory.cs" />
-    <Compile Include="FluentAPI\IJobConfiguration.cs" />
-    <Compile Include="FluentAPI\JobBuilderExtensions.cs" />
-    <Compile Include="FluentAPI\JobConfiguration.cs" />
-    <Compile Include="FluentAPI\SchedulerExtensions.cs" />
-    <Compile Include="IContainer.cs" />
-    <Compile Include="IContainerFactory.cs" />
-    <Compile Include="IHideObjectMembers.cs" />
-    <Compile Include="IJob.cs" />
-    <Compile Include="ILogger.cs" />
-    <Compile Include="ILoggerFactory.cs" />
-    <Compile Include="IScheduler.cs" />
-    <Compile Include="IWaitSource.cs" />
-    <Compile Include="JobSetup.cs" />
-    <Compile Include="LogSeverity.cs" />
-    <Compile Include="NativeWrappers\INative.cs" />
-    <Compile Include="NativeWrappers\Native.cs" />
-    <Compile Include="NativeWrappers\TimerWaitHandle.cs" />
-    <Compile Include="NativeWrappers\Win32Native.cs" />
-    <Compile Include="NoLogger.cs" />
-    <Compile Include="Scheduler.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WaitSources\DateTimeSequenceWaitSource.cs" />
-    <Compile Include="WaitSources\IntervalWaitSource.cs" />
-    <Compile Include="WaitSources\WaitUnitDate.cs" />
-    <Compile Include="WaitSources\WaitUntilNextDateWaitSource.cs" />
-    <Compile Include="Worker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Trigger.NET.nuspec" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Trigger.NET\Trigger.NET.csproj">
+      <Project>{f434617f-a8dc-4d68-bec3-95cc3d8b6abe}</Project>
+      <Name>Trigger.NET</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
