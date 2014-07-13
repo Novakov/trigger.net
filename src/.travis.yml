@@ -1,0 +1,9 @@
+language: c
+
+install:
+        - sudo apt-get install mono-devel mono-gmcs
+
+script:
+        - cd src
+        - mono packages/FAKE.3.2.0/tools/fake.exe ./build.fsx
+            
