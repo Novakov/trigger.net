@@ -6,4 +6,4 @@ install:
 script:
         - cd src
         - mono packages/FAKE.3.2.0/tools/fake.exe ./build.fsx
-            
+        - echo "DONE"            
