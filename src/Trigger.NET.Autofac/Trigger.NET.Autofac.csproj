@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionVersionInfo.cs">
+      <Link>Properties\SolutionVersionInfo.cs</Link>
+    </Compile>
     <Compile Include="AutofacContainer.cs" />
     <Compile Include="AutofacContainerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

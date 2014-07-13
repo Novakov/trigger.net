@@ -1,15 +1,16 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>Trigger.NET</id>
     <version>$version$</version>
-    <title>$title$</title>
+    <title>Trigger.NET</title>
     <authors>Maciej Nowak, Mateusz Stasch</authors>
     <owners>Maciej Nowak, Mateusz Stasch</owners>
+    <licenseUrl>http://github.com/Novakov/trigger.net/blob/master/LICENSE.txt</licenseUrl>
     <projectUrl>http://github.com/Novakov/trigger.net</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Use Cron expressions to specify job run times</description>
-    <copyright>Copyright 2013</copyright>
-    <tags>Scehduling Task Job Trigger Cron Crontab</tags>
+    <description>Simple job scheduler for .NET</description>
+    <copyright>Copyright 2014</copyright>
+    <tags>Scheduling Task Job Trigger</tags>
   </metadata>
 </package>

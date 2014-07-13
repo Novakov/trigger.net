@@ -1,15 +1,16 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>Trigger.NET.Autofac</id>
     <version>$version$</version>
-    <title>$title$</title>
+    <title>Trigger.NET.Autofac</title>
     <authors>Maciej Nowak, Mateusz Stasch</authors>
     <owners>Maciej Nowak, Mateusz Stasch</owners>
     <projectUrl>http://github.com/Novakov/trigger.net</projectUrl>
+    <licenseUrl>http://github.com/Novakov/trigger.net/blob/master/LICENSE.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Autofac integration for Trigger.NET</description>
-    <copyright>Copyright 2013</copyright>
-    <tags>Scehduling Task Job Trigger</tags>
+    <copyright>Copyright 2014</copyright>
+    <tags>Scehduling Task Job Trigger Autofac</tags>
   </metadata>
 </package>

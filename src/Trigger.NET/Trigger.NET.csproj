@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionVersionInfo.cs">
+      <Link>Properties\SolutionVersionInfo.cs</Link>
+    </Compile>
     <Compile Include="ConsoleLoggerFactory.cs" />
     <Compile Include="DefaultContainer.cs" />
     <Compile Include="ConsoleLogger.cs" />

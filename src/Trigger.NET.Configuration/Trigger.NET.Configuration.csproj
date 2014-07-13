@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionVersionInfo.cs">
+      <Link>Properties\SolutionVersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Internals\ConfigurationParser.cs" />
     <Compile Include="Internals\XmlJobParser.cs" />
     <Compile Include="SchedulerExtensions.cs" />
@@ -49,6 +52,11 @@
       <Project>{F434617F-A8DC-4D68-BEC3-95CC3D8B6ABE}</Project>
       <Name>Trigger.NET</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Trigger.NET.Configuration.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

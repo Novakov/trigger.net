@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Trigger.NET.Configuration</id>
+    <version>$version$</version>
+    <title>Trigger.NET.Configuration</title>
+    <authors>Maciej Nowak, Mateusz Stasch</authors>
+    <owners>Maciej Nowak, Mateusz Stasch</owners>
+    <projectUrl>http://github.com/Novakov/trigger.net</projectUrl>
+    <licenseUrl>http://github.com/Novakov/trigger.net/blob/master/LICENSE.txt</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Configuration from file for Trigger.NET</description>
+    <copyright>Copyright 2014</copyright>
+    <tags>Scehduling Task Job Trigger Configuration File Xml</tags>
+  </metadata>
+</package>
