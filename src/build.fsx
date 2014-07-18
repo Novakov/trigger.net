@@ -7,7 +7,7 @@ open Fake.NuGetHelper
 open Fake.AssemblyInfoFile
 open System
 
-let Version = getBuildParamOrDefault "Version" "1.0.0.0-dev"
+let Version = getBuildParamOrDefault "Version" "1.0.0-dev"
 
 Target "Default" DoNothing
 
@@ -38,7 +38,7 @@ Target "PackNuGet" (fun _ ->
 "Clean"
 ==> "GenerateVersionFile"
 ==> "Build"
-==> "PackNuGet"
+=?> ("PackNuGet", not isLinux)
 ==> "Default"
 
 RunTargetOrDefault "Default"
