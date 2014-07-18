@@ -1,6 +1,10 @@
 language: c
 
 install:
+        - sudo bash -c "echo deb http://ppa.launchpad.net/directhex/monoxide/ubuntu precise main >> /etc/apt/sources.list"
+        - sudo bash -c "echo deb-src http://ppa.launchpad.net/directhex/monoxide/ubuntu precise main >> /etc/apt/sources.list"
+        - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 23DC003A
+        - sudo apt-get update
         - sudo apt-get install mono-devel mono-gmcs
 
 script:
