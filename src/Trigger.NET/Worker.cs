@@ -50,9 +50,13 @@ namespace Trigger.NET
                     RunJob();
                 }
             }
+            catch (ThreadAbortException)
+            {
+                logger.Log(LogSeverity.Info, "Job ({0}) execution interrupted by user code!", jobType.FullName);
+            }
             catch (ThreadInterruptedException)
             {
-                // NOP!
+                logger.Log(LogSeverity.Info, "Job ({0}) execution interrupted by user code!", jobType.FullName);                
             }
         }
 
@@ -66,7 +70,7 @@ namespace Trigger.NET
                 {
                     logger.Log(LogSeverity.Debug, "Instantiating job: {0}", jobType.FullName);
 
-                    var jobInstance = (IJob)container.Resolve(jobType);
+                    var jobInstance = (IJob) container.Resolve(jobType);
 
                     var context = this.setup.BuildContext();
 
@@ -78,9 +82,12 @@ namespace Trigger.NET
 
                         logger.Log(LogSeverity.Debug, "Executing job ({0})...Done!", jobType.FullName);
                     }
+                    catch (ThreadAbortException)
+                    {
+                        throw;
+                    }
                     catch (ThreadInterruptedException)
                     {
-                        logger.Log(LogSeverity.Info, "Job ({0}) execution interrupted by user code!", jobType.FullName);
                         throw;
                     }
                     catch (Exception ex)
@@ -98,8 +105,15 @@ namespace Trigger.NET
                             disposable.Dispose();
                         }
                     }
-
                 }
+            }
+            catch (ThreadAbortException)
+            {
+                throw;
+            }
+            catch (ThreadInterruptedException)
+            {
+                throw;
             }
             catch (Exception ex)
             {

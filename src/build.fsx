@@ -39,6 +39,7 @@ Target "RunTests" (fun _ ->
     )
     |> NUnit (fun p -> { p with
                             ShowLabels = false
+                            OutputFile = currentDirectory @@ ".." @@ "build" @@ "TestResult.xml"
         })
    
 )

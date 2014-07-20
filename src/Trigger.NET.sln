@@ -42,6 +42,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		helpers.fsx = helpers.fsx
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trigger.NET.Tests", "Trigger.NET.Tests\Trigger.NET.Tests.csproj", "{7E93C8F0-7900-4D9E-A1E2-9F2542F81104}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{2A09AE34-18BD-4A78-96B5-A2CDB31FEB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A09AE34-18BD-4A78-96B5-A2CDB31FEB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A09AE34-18BD-4A78-96B5-A2CDB31FEB57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E93C8F0-7900-4D9E-A1E2-9F2542F81104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E93C8F0-7900-4D9E-A1E2-9F2542F81104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E93C8F0-7900-4D9E-A1E2-9F2542F81104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E93C8F0-7900-4D9E-A1E2-9F2542F81104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +105,6 @@ Global
 		{5F01454E-B392-426B-8750-BDB60BE9C4CD} = {BC5DA10F-331F-44B2-A93D-0D1236DE20D2}
 		{62B048F0-C700-472A-ADA0-D9A3C1BF2620} = {61D93860-270C-4747-9A6A-F4163A2D937B}
 		{2A09AE34-18BD-4A78-96B5-A2CDB31FEB57} = {62B048F0-C700-472A-ADA0-D9A3C1BF2620}
+		{7E93C8F0-7900-4D9E-A1E2-9F2542F81104} = {68C2A55A-2091-4C1C-BF8C-EB4CE89ED4A2}
 	EndGlobalSection
 EndGlobal
