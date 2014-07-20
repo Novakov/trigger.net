@@ -29,6 +29,20 @@ Target "Build" (fun _ ->
     msbuild ["Build"] []    
 )
 
+Target "RunTests" (fun _ -> 
+    !! "**/*.Tests.csproj"
+    |> Seq.map (fun p ->
+        let baseDir = System.IO.Path.GetDirectoryName(p)
+        let name = System.IO.Path.GetFileNameWithoutExtension(p)
+
+        baseDir @@ "bin" @@ "Release" @@ (name + ".dll")
+    )
+    |> NUnit (fun p -> { p with
+                            ShowLabels = false
+        })
+   
+)
+
 Target "PackNuGet" (fun _ ->
     for nuspec in !! ("**/Trigger.NET*.nuspec") do
         trace ("Packing " + System.IO.Path.GetFileNameWithoutExtension(nuspec))
@@ -38,6 +52,7 @@ Target "PackNuGet" (fun _ ->
 "Clean"
 ==> "GenerateVersionFile"
 ==> "Build"
+==> "RunTests"
 =?> ("PackNuGet", not isLinux)
 ==> "Default"
 
