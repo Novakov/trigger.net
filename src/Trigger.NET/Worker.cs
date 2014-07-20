@@ -68,11 +68,13 @@ namespace Trigger.NET
 
                     var jobInstance = (IJob)container.Resolve(jobType);
 
+                    var context = this.setup.BuildContext();
+
                     try
                     {
                         logger.Log(LogSeverity.Debug, "Executing job ({0})...", jobType.FullName);
 
-                        jobInstance.Execute();
+                        jobInstance.Execute(context);
 
                         logger.Log(LogSeverity.Debug, "Executing job ({0})...Done!", jobType.FullName);
                     }

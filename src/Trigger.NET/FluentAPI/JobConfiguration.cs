@@ -30,5 +30,11 @@
 
             return this;
         }
+
+        public IJobConfiguration<TJob> WithParameter(object parameter)
+        {
+            this.setup.Parameter = parameter;
+            return this;
+        }
     }
 }

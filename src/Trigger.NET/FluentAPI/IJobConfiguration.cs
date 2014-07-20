@@ -7,5 +7,6 @@
     {
         IJobConfiguration<TJob> UseWaitSource(IWaitSource waitSource);
         IJobConfiguration<TJob> Setup(Action<JobSetup> action);
+        IJobConfiguration<TJob> WithParameter(object parameter);
     }
 }

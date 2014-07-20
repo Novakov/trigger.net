@@ -47,7 +47,7 @@
             this.hello = hello;
         }
 
-        public void Execute()
+        public void Execute(JobContext context)
         {
             Console.WriteLine(hello.Hello("World"));
         }

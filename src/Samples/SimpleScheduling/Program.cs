@@ -26,7 +26,7 @@
 
     public class WriteDot : IJob
     {
-        public void Execute()
+        public void Execute(JobContext context)
         {
             Console.WriteLine(".");
         }

@@ -58,6 +58,7 @@
     <Compile Include="ILoggerFactory.cs" />
     <Compile Include="IScheduler.cs" />
     <Compile Include="IWaitSource.cs" />
+    <Compile Include="JobContext.cs" />
     <Compile Include="JobSetup.cs" />
     <Compile Include="LogSeverity.cs" />
     <Compile Include="NativeWrappers\INative.cs" />
