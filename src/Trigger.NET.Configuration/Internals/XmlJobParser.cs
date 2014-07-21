@@ -22,19 +22,7 @@
 
             var attributes = xml.Attributes().ToDictionary(x => x.Name.LocalName, x => x.Value);
 
-            return s =>
-            {
-                var descriptor = ConfigurationParser.ParseAttributes(attributes);
-
-                var jobSetup = new JobSetup()
-                {
-                    WaitSource = descriptor.Item2
-                };
-
-                return (Guid) typeof(IScheduler).GetMethod("AddJob")
-                    .MakeGenericMethod(descriptor.Item1)
-                    .Invoke(s, new object[] {jobSetup});
-            };
+            return JobFactory.Create(attributes);
         }
 
         public static IEnumerable<Func<IScheduler, Guid>> Parse(XDocument xml)
@@ -50,6 +38,6 @@
             }
 
             return xml.Descendants("Job").Select(Parse);
-        } 
+        }
     }
 }

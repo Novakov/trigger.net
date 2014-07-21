@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,10 +43,14 @@
     <Compile Include="..\SolutionVersionInfo.cs">
       <Link>Properties\SolutionVersionInfo.cs</Link>
     </Compile>
+    <Compile Include="IConfigurationSource.cs" />
     <Compile Include="Internals\ConfigurationParser.cs" />
+    <Compile Include="Internals\JobFactory.cs" />
     <Compile Include="Internals\XmlJobParser.cs" />
+    <Compile Include="JsonConfigurationSource.cs" />
     <Compile Include="SchedulerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlConfigurationSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Trigger.NET\Trigger.NET.csproj">
