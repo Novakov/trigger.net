@@ -8,6 +8,7 @@ install:
         - sudo apt-get install mono-devel mono-gmcs
 
 script:
+        - mkdir build
         - cd src
         - mono ./packages/FAKE.3.2.0/tools/FAKE.exe ./build.fsx
         - echo "DONE"            
