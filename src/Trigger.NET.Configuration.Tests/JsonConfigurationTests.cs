@@ -24,7 +24,7 @@
 
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
             // act
-            source.ProcessJson(scheduler.Object, stream);
+            source.Configure(scheduler.Object, stream);
 
             // assert
             scheduler.Verify(x => x.AddJob<DummyJob>(It.Is<JobSetup>(y => (y.WaitSource as IntervalWaitSource).Interval == TimeSpan.FromSeconds(1))), Times.Once);

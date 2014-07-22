@@ -7,20 +7,12 @@ namespace Trigger.NET.Configuration
 
     public class JsonConfigurationSource : IConfigurationSource
     {
-        public void Configure(IScheduler scheduler, string source)
-        {
-            using (var tr = File.OpenRead(source))
-            {
-                ProcessJson(scheduler, tr);
-            }
-        }
-
-        public void ProcessJson(IScheduler scheduler, Stream tr)
+        public void Configure(IScheduler scheduler, Stream source)
         {
             var settings = new DataContractJsonSerializerSettings() { UseSimpleDictionaryFormat = true };
             var serializer = new DataContractJsonSerializer(typeof(Dictionary<string, string>[]), settings);
 
-            var obj = serializer.ReadObject(tr) as Dictionary<string, string>[];
+            var obj = serializer.ReadObject(source) as Dictionary<string, string>[];
 
             foreach (var attributes in obj)
             {

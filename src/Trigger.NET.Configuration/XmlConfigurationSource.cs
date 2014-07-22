@@ -6,9 +6,9 @@
 
     public class XmlConfigurationSource : IConfigurationSource
     {
-        public void Configure(IScheduler scheduler, string source)
+        public void Configure(IScheduler scheduler, Stream source)
         {
-            using (var tr = File.OpenText(source))
+            using (var tr = new StreamReader(source))
             {
                 var document = XDocument.Load(tr);
 
