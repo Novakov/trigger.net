@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NativeSupportTest.cs" />
     <Compile Include="CoreTests.cs" />
     <Compile Include="Helpers\ManualTrigger.cs" />
     <Compile Include="Helpers\SchedulerExtensions.cs" />
