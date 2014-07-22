@@ -2,7 +2,7 @@
 open Fake
 open System
 
-let NugetOutputDirectory = currentDirectory @@ @"..\build\packages"
+let NugetOutputDirectory = currentDirectory @@ @".." @@ "build" @@ "packages"
 
 let msbuild targets properties = 
     let setParams (defaults:MSBuildParams) = {

@@ -3,7 +3,7 @@
     using System;
     using System.Threading;
 
-    interface INative
+    public interface INative
     {
         WaitHandle AbsoluteTimer(DateTimeOffset expireAt);
     }

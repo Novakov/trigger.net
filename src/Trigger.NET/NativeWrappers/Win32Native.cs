@@ -5,7 +5,7 @@
     using System.Threading;
     using Microsoft.Win32.SafeHandles;
 
-    class Win32Native : INative
+    public class Win32Native : INative
     {       
         [DllImport("kernel32.dll")]
         private static extern IntPtr CreateWaitableTimer(IntPtr lpTimerAttributes, bool bManualReset, string lpTimerName);

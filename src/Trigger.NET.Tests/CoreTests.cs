@@ -4,7 +4,6 @@
     using System.Threading;
     using FluentAPI;
     using Helpers;
-    using Moq;
     using NUnit.Framework;
 
     [TestFixture]
@@ -82,6 +81,31 @@
 
             // assert            
             Assert.That(mark2.WaitOne(TimeSpan.FromSeconds(0.1)), Is.False, "Job should be interrupted");
-        }
+        }        
+
+        [Test]
+        public void FailOfJobShouldNotPreventNextExecution()
+        {
+            // arrange
+            var mark1 = new ManualResetEvent(false);
+            var trigger = new ManualTrigger();
+
+            scheduler.AddAction(trigger, ctx =>
+            {
+                mark1.Set();
+
+                throw new Exception("Exception in job");
+            });
+
+            trigger.TriggerNow();
+            mark1.WaitOne();
+            mark1.Reset();
+
+            // act                       
+            trigger.TriggerNow();
+
+            // assert
+            Assert.That(mark1.WaitOne(TimeSpan.FromSeconds(0.1)), Is.True, "Job should be executed");
+        }        
     }
 }
