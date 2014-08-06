@@ -26,6 +26,7 @@ Target "GenerateVersionFile" (fun _ ->
 )
 
 Target "Build" (fun _ ->
+    RestorePackages()
     msbuild ["Build"] []    
 )
 

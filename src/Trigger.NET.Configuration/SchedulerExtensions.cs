@@ -1,27 +1,43 @@
 ﻿namespace Trigger.NET.Configuration
 {
     using System.IO;
-    using System.Xml.Linq;
-    using Trigger.NET.Configuration.Internals;
 
     public static class SchedulerExtensions
     {
-        public static void ConfigureFromXml(this IScheduler @this, string path)
+        public static IScheduler ConfigureFromXml(this IScheduler @this, string path)
         {
-            using (var tr = File.OpenText(path))
+            using (var stream = new FileStream(path, FileMode.Open))
             {
-                var document = XDocument.Load(tr);
-
-                foreach (var addDef in XmlJobParser.Parse(document))
-                {
-                    addDef(@this);
-                }
+                return @this.ConfigureFromXml(stream);
             }
         }
 
-        public static void ConfigureFromJson(this IScheduler @this, string path)
+        public static IScheduler ConfigureFromXml(this IScheduler @this, Stream stream)
         {
-            
+            return @this.Configure<XmlConfigurationSource>(stream);
+        }
+        
+        public static IScheduler ConfigureFromJson(this IScheduler @this, string path)
+        {
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                return @this.ConfigureFromXml(stream);
+            }
+        }
+        
+        public static IScheduler ConfigureFromJson(this IScheduler @this, Stream stream)
+        {
+            return @this.Configure<JsonConfigurationSource>(stream);
+        }
+
+        public static IScheduler Configure<TConfigurationSource>(this IScheduler @this, Stream source)
+            where TConfigurationSource : IConfigurationSource, new()
+        {
+            var configurator = new TConfigurationSource();
+
+            configurator.Configure(@this, source);
+
+            return @this;
         }
     }
 }
