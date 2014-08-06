@@ -26,9 +26,11 @@ _ReSharper*/
 
 # NuGet Packages Directory
 ## TODO: If you have NuGet Package Restore enabled, uncomment the next line
-#packages/
+src/packages/
 ## TODO: If the tool you use requires repositories.config, also uncomment the next line
-#!packages/repositories.config
+!src/packages/repositories.config
+!src/packages/FAKE*
+!src/packages/NUnit.Runners.*
 
 # Backup & report files from converting an old project file to a newer
 # Visual Studio version. Backup files are not needed, because we have git ;-)
