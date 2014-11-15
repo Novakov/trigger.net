@@ -13,7 +13,11 @@
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
                 Current = new Win32Native();
-            }            
+            }
+            else if (Environment.OSVersion.Platform == PlatformID.MacOSX || Environment.OSVersion.Platform == PlatformID.Unix)
+            {
+                Current = new PlatformIndependentNative();
+            }
         }
     }
 }
