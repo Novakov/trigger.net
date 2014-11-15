@@ -7,7 +7,7 @@ open Fake.NuGetHelper
 open Fake.AssemblyInfoFile
 open System
 
-let Version = getBuildParamOrDefault "Version" "1.0.0-dev"
+let Version = getBuildParamOrDefault "Version" "1.0.1"
 
 Target "Default" DoNothing
 
