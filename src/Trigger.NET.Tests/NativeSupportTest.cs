@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Trigger.NET.Tests
 {
     using System.Collections;
-    using Helpers;
     using NativeWrappers;
     using NUnit.Framework;
 
-    [TestFixture(TypeArgs = new[] { typeof(Win32Native) }, Category = "platform/win")]    
+    [TestFixture(TypeArgs = new[] { typeof(Win32Native) }, Category = "platform/win")]
+    [TestFixture(TypeArgs = new[] { typeof(PlatformIndependentNative) }, Category = "platform/any")]
     [Category("platforms")]
     [Category("longrunning")]
     [TestFixture]
@@ -28,12 +25,12 @@ namespace Trigger.NET.Tests
                 .Where(x => x.StartsWith("platform/"))                
                 .Select(x => x.Substring("platform/".Length)).ToArray();
 
-            if (Environment.OSVersion.Platform == PlatformID.Win32NT && !platforms.Contains("win"))
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT && !(platforms.Contains("win") || platforms.Contains("any")))
             {
                 Assert.Ignore("Fixture not supported on this platform");
             }
 
-            if (Environment.OSVersion.Platform == PlatformID.Unix && !platforms.Contains("linux"))
+            if (Environment.OSVersion.Platform == PlatformID.Unix && !(platforms.Contains("linux") || platforms.Contains("any")))
             {
                 Assert.Ignore("Fixture not supported on this platform");
             }

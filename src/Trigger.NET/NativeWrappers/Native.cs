@@ -13,7 +13,11 @@
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
                 Current = new Win32Native();
-            }            
+            }
+            else
+            {
+                Current = new PlatformIndependentNative();
+            }
         }
     }
 }

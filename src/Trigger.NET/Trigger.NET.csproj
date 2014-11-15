@@ -62,6 +62,7 @@
     <Compile Include="JobSetup.cs" />
     <Compile Include="LogSeverity.cs" />
     <Compile Include="NativeWrappers\INative.cs" />
+    <Compile Include="NativeWrappers\PlatformIndependentNative.cs" />
     <Compile Include="NativeWrappers\Native.cs" />
     <Compile Include="NativeWrappers\TimerWaitHandle.cs" />
     <Compile Include="NativeWrappers\Win32Native.cs" />
