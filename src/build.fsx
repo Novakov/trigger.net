@@ -21,7 +21,7 @@ Target "GenerateVersionFile" (fun _ ->
         [
             Attribute.Version Version
             Attribute.FileVersion Version
-            Attribute.Metadata("GitHash", Git.Information.getCurrentSHA1(currentDirectory))
+            //Attribute.Metadata("GitHash", Git.Information.getCurrentSHA1(currentDirectory))
         ]
 )
 
